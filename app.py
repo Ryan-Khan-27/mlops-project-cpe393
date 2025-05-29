@@ -15,6 +15,7 @@ def home():
 @app.route("/predict", methods=["POST"])
 def predict():
     data = request.get_json(force=True)
+    print("Received JSON data:", data)  # <--- prints to Flask console
     input_data = np.array(data["features"]).reshape(1, -1)
     input_scaled = scaler.transform(input_data)
     prediction = model.predict(input_scaled)
